@@ -1,4 +1,8 @@
 Mitt::Application.routes.draw do
+  get "donate/landing"
+  get "donate/thanks"
+  root "donate#landing"
+  resources :charges
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

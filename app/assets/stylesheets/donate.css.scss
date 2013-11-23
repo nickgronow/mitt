@@ -1,0 +1,76 @@
+// Place all the styles related to the donate controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#container {
+	margin: 0 auto 0;
+	max-width: 950px;
+	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+	#header {
+		border: 1px dotted #888;
+		margin: 10px 0 0;
+		min-height: 122px;
+		img {
+			height: 100px;
+			margin: 10px 0 10px 10px;
+			float: left;
+		}
+		p {
+			text-align: left;
+			margin: 0 0 0 120px;
+			color: #dd0000;
+			font-size: 1.5em;
+			line-height: 1.3em;
+			font-family: Palatino Linotype, Book Antiqua, Palatino, serif;
+			text-transform: uppercase;
+		}
+		p.first {
+			margin-top: 30px;
+		}
+	}
+	h1 {
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		color: #333;
+		font-size: 1.75em;
+		margin: 1em 0;
+	}
+	h2 {
+		text-align:center;
+		color: #555;
+		font-weight: normal;
+		font-size: 1.5em;
+	}
+	p {
+		font-size: 1em;
+		color: #777;
+		b {
+			font-weight: bold;
+		}
+	}
+	#cover-photo {
+		margin-bottom: 15px;
+	}
+	.donate-column {
+		margin: 20px 30px 20px;
+		p {
+			font-size: 1em;
+			line-height: 1.3em;
+			height: 4em;
+		}
+	}
+	.column-separator {
+		border-right: 1px dotted #888;
+	}
+}
+.reveal-modal {
+	h2,h3,p {
+		color: white;
+	}
+}
+#donate-form {
+	background-color: $primary-color;
+}
+#give-form {
+	background-color: $success-color;
+}

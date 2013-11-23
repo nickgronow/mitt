@@ -1,0 +1,52 @@
+<%= content_for :head_title, 'Making a difference' %>
+<h1>Yes! I want to help kids reach their full potential.</h1>
+<%= image_tag('cover-photo-'+(rand(1..2)).to_s+'.png', id: 'cover-photo') %>
+<div class="row collapse">
+	<div class="large-6 small-12 columns column-separator">
+		<div class="donate-column">
+			<h2>Become A Sponsor</h2>
+			<p>A <b>$200</b> gift can give one child the confidence, love, and encouragement they need to reshape their life.</p>
+			<form class="custom">
+				<select id="sponsor-level">
+					<option value="gold">Heart of Gold</option>
+					<option value="silver">Heart of Silver</option>
+					<option value="bronze">Heart of Bronze</option>
+					<option value="ocean">Heart of Ocean</option>
+					<option value="cupid">Cupid</option>
+					<option value="rose">Rose</option>
+				</select>
+			</form>
+			<a class="button expand" data-reveal-id="donate-form">Donate</a>
+		</div>
+	</div>
+	<div class="large-6 small-12 columns last">
+		<div class="donate-column">
+			<h2>Donate To Our Auction</h2>
+			<p>Your donation can give children the confidence, love, and encouragement they need to reshape their lives. <b>I'd like to donate...</b></p>
+			<form class="custom">
+				<select id="sponsor-level">
+					<option value="vatation">Vacation Getaway or Condo Rental</option>
+					<option value="sports">Sporting Event Tickets</option>
+					<option value="art">High Value Artwork or Jewelry</option>
+					<option value="airplane">Airline Miles or Tickets</option>
+					<option value="electronics">High Value Electronics</option>
+					<option value="entertainment">Entertainment Event Tickets</option>
+					<option value="other">Other</option>
+				</select>
+			</form>
+			<a class="button expand success" data-reveal-id="give-form">Give</a>
+		</div>
+	</div>
+</div>
+<div id="donate-form" class="reveal-modal" data-reveal>
+<h2>Become A Sponsor</h2>
+	<p class="lead">Your couch.  It is mine.</p>
+	<p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="give-form" class="reveal-modal" data-reveal>
+<h2>Donate To Our Auction</h2>
+	<p class="lead">Your couch.  It is mine.</p>
+	<p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+	<a class="close-reveal-modal">&#215;</a>
+</div>

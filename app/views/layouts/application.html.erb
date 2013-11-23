@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mitt</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= content_for?(:head_title) ? yield(:head_title) : "Heart In The Tropics" %></title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "custom.modernizr" %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div id="container">
+		<div id="header">
+			<%= image_tag('mitt-logo-square.png') %>
+			<p class="first">Heart In The Tropics</p>
+			<p>February 15, 2014</p>
+		</div>
+		<%= yield %>
+	</div>
+    <%= javascript_include_tag "application" %>
 </body>
 </html>
