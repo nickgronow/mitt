@@ -17,3 +17,6 @@
 
 # Ignore Vim swap files
 *.swp
+
+# Ignore the Vendor Bundle directory
+/vendor/bundle

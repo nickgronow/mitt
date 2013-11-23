@@ -33,12 +33,11 @@ gem 'paperclip', '~> 3.0'
 # Amazon web services
 gem 'aws-sdk'
 
+# Heroku
+gem 'rails_12factor', group: :production
+
 # Login system
 gem 'authlogic'
-
-# gem 'redcarpet'
-
-# gem 'newrelic_rpm'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -50,6 +49,10 @@ end
 gem 'zurb-foundation'
 # Stripe
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+# gem 'redcarpet'
+
+# gem 'newrelic_rpm'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
