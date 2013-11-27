@@ -14,6 +14,9 @@ Mitt::Application.routes.draw do
 	# Donations
 	resources :donations
 
+	# Browser compatibility
+	get "compatibility", to: 'donate#compatibility'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

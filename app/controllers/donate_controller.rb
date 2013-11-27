@@ -1,7 +1,8 @@
 class DonateController < ApplicationController
-	protect_from_forgery :except => :thanks
-	
 	def landing
+	end
+
+	def compatibility
 	end
 
 	def thanks

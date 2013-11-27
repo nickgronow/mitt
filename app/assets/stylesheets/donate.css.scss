@@ -6,12 +6,12 @@
 	max-width: 950px;
 	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
 	#header {
-		border: 1px dotted #888;
 		margin: 10px 0 0;
-		min-height: 122px;
+		min-height: 120px;
+		padding: 30px 0 0 240px;
 		img {
 			height: 100px;
-			margin: 10px 0 10px 10px;
+			margin: -15px 0 10px 10px;
 			float: left;
 		}
 		p {
@@ -24,7 +24,6 @@
 			text-transform: uppercase;
 		}
 		p.first {
-			margin-top: 30px;
 		}
 	}
 	h1 {

@@ -1,5 +1,5 @@
 class FormMailer < ActionMailer::Base
-	default to: "Nick Gronow <nick@webonlineventures.com>"
+	default to: ENV['CONTACT_EMAIL']
 
 	def sponsor_email(sponsor)
 		@supporter = sponsor

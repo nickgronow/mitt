@@ -77,4 +77,12 @@ Mitt::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Email Deliverability
+  config.smtp_settings = {
+	  address: 'smtp.mandrillapp.com',
+	  port: 587,
+	  user_name: ENV['SMTP_USERNAME'],
+	  password: ENV['SMTP_PASSWORD']
+  }
 end
