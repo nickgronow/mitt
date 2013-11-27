@@ -4,6 +4,7 @@
 #container {
 	margin: 0 auto 0;
 	max-width: 950px;
+	min-height: 900px;
 	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
 	#header {
 		margin: 10px 0 0;
@@ -64,8 +65,8 @@
 	.column-separator {
 		border-right: 1px dotted #888;
 	}
-	.button.expand {
-		margin-bottom: 200px;
+	form.custom .custom.dropdown ul {
+		max-height: none;
 	}
 }
 .reveal-modal {
@@ -113,4 +114,4 @@
 	input::-moz-placeholder { color:$placeholder-color; } /* firefox 19+ */
 	input:-ms-input-placeholder { color:$placeholder-color; } /* ie */
 	input:-moz-placeholder { color:$placeholder-color; }
-} 
+}

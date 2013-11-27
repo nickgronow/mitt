@@ -71,7 +71,7 @@
 </div>
 <div id="give-form" class="reveal-modal" data-reveal>
 <h2>Donate To Our Auction</h2>
-<form data-abide id="auction-fields" method="post" action="/donate/thanks">
+<%= form_tag '/donate/thanks', method: 'post', "data-abide" => '', id: 'auction-fields' %>
 	<div class="row"><div class="large-centered large-8 small-12 columns">
 		<input type="text" name="title" placeholder="Item Description" required pattern=".{10,250}" />
 		<small class="error">You must enter an item description between 10 and 250 characters.</small>

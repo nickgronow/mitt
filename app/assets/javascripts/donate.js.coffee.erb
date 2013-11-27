@@ -96,8 +96,8 @@ $(document).ready ->
 	# Auction form revealed
 	$('#reveal-auction-form').click (e) ->
 		title = $('#auction-item-type option:selected').html()
-		if ! title
+		if $('#auction-item-type').val() == ''
 			alert "Select an auction level first"
 			e.stopImmediatePropagation()
-		title = '' if title == 'other'
+		title = '' if title == 'Other'
 		$('#auction-fields [name="title"]').val(title)
