@@ -20,3 +20,6 @@
 
 # Ignore the Vendor Bundle directory
 /vendor/bundle
+
+# Ignore application configuration
+/config/application.yml

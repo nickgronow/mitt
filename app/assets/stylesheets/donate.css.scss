@@ -58,9 +58,15 @@
 			line-height: 1.3em;
 			height: 4em;
 		}
+		.custom.dropdown {
+			font-size: 1em;
+		}
 	}
 	.column-separator {
 		border-right: 1px dotted #888;
+	}
+	.button.expand {
+		margin-bottom: 200px;
 	}
 }
 .reveal-modal {
@@ -68,9 +74,44 @@
 		color: white;
 	}
 }
+.reveal-modal {
+	input {
+		font-size: 1.1em;
+		background-color: rgba(0,0,0,0.15);
+		color: white;
+		border: none;
+	}
+	input:focus {
+		background-color: rgba(0,0,0,0.25)
+	}
+	.row {
+		height: 5em;
+	}
+	.button {
+		margin-left: auto;
+		margin-right: auto;
+		width: 200px;
+		display: block;
+	}
+	.error input {
+		background-color: rgba(255,0,0,0.25);
+		border: 1px solid rgba(255,0,0,0.15);
+	}
+}
 #donate-form {
 	background-color: $primary-color;
+	/* Form Fields */
+	$placeholder-color: 'white';
+	input::-webkit-input-placeholder { color:$placeholder-color; }
+	input::-moz-placeholder { color:$placeholder-color; } /* firefox 19+ */
+	input:-ms-input-placeholder { color:$placeholder-color; } /* ie */
+	input:-moz-placeholder { color:$placeholder-color; }
 }
 #give-form {
 	background-color: $success-color;
+	$placeholder-color: 'white';
+	input::-webkit-input-placeholder { color:$placeholder-color; }
+	input::-moz-placeholder { color:$placeholder-color; } /* firefox 19+ */
+	input:-ms-input-placeholder { color:$placeholder-color; } /* ie */
+	input:-moz-placeholder { color:$placeholder-color; }
 } 

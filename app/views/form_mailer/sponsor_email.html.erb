@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content='text/html; charset="utf-8' http-equiv='Content-Type' />
+	</head>
+	<body>
+		<h1>We have a new supporter for Midnight in the Tropics!</h1>
+		<h3>Sponsor Level: <%= @supporter.title %></h3>
+		<p><%= @supporter.name %> signed up and paid by credit card through: <a href="donate-to-mitt.herokuapp.com">Donate To MITT</a></p>
+		<p><b>Amount Donated: <%= @supporter.amount %></b></p>
+		<p>Here is their contact info:</p>
+		<ul>
+			<li>Name: <%= @supporter.name %></li>
+			<li>Email: <%= @supporter.email %></li>
+			<li>Phone: <%= @supporter.phone %></li>
+		</ul>
+	</body>
+</html>

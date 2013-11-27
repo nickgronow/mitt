@@ -1,13 +1,18 @@
-<%= content_for :head_title, 'Making a difference' %>
+<% content_for :head_title, 'Making a difference' %>
+<% content_for :head do %>
+	<script src="https://checkout.stripe.com/checkout.js"></script>
+	<%= tag :meta, name: 'stripe-key', content: Rails.configuration.stripe[:publisher_key] %>
+<% end %>
 <h1>Yes! I want to help kids reach their full potential.</h1>
 <%= image_tag('cover-photo-'+(rand(1..2)).to_s+'.png', id: 'cover-photo') %>
 <div class="row collapse">
 	<div class="large-6 small-12 columns column-separator">
 		<div class="donate-column">
 			<h2>Become A Sponsor</h2>
-			<p>A <b>$200</b> gift can give one child the confidence, love, and encouragement they need to reshape their life.</p>
+			<p>A <b>$200</b> gift can give one child the confidence, love, and encouragement they need to reshape their life. <a href="http://www.midnightinthetropics.com/sponsor-packages" target="_blank">Why become a sponsor?</a></p>
 			<form class="custom">
 				<select id="sponsor-level">
+					<option value="">Select sponsor level...</option>
 					<option value="gold">Heart of Gold</option>
 					<option value="silver">Heart of Silver</option>
 					<option value="bronze">Heart of Bronze</option>
@@ -16,7 +21,7 @@
 					<option value="rose">Rose</option>
 				</select>
 			</form>
-			<a class="button expand" data-reveal-id="donate-form">Donate</a>
+			<a class="button expand" id="reveal-donate-form" data-reveal-id="donate-form">Donate</a>
 		</div>
 	</div>
 	<div class="large-6 small-12 columns last">
@@ -24,7 +29,8 @@
 			<h2>Donate To Our Auction</h2>
 			<p>Your donation can give children the confidence, love, and encouragement they need to reshape their lives. <b>I'd like to donate...</b></p>
 			<form class="custom">
-				<select id="sponsor-level">
+				<select id="auction-item-type">
+					<option value="">Select an item type...</option>
 					<option value="vatation">Vacation Getaway or Condo Rental</option>
 					<option value="sports">Sporting Event Tickets</option>
 					<option value="art">High Value Artwork or Jewelry</option>
@@ -34,23 +40,54 @@
 					<option value="other">Other</option>
 				</select>
 			</form>
-			<a class="button expand success" data-reveal-id="give-form">Give</a>
+			<a class="button expand success" data-reveal-id="give-form" id="reveal-auction-form">Give</a>
 		</div>
 	</div>
 </div>
 <div id="donate-form" class="reveal-modal" data-reveal>
 <h2>Become A Sponsor</h2>
-	<input type="text" name="donate-amount" id="donate-amount" placeholder
-	<input type="text" name="first-name" id="donate-amount" />
-	<input type="text" name="donate-amount" id="donate-amount" />
-	
-	<p class="lead">Your couch.  It is mine.</p>
-	<p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+<form data-abide id="donate-fields" method="post" action="/donate/thanks">
+	<input type="hidden" name="title" id="title" value="" />
+	<div class="row"><div class="large-centered large-8 small-12 columns">
+		<input type="text" name="donate-amount" id="donate-amount" placeholder="Donation Amount" required/>
+		<small class="error">You must enter a valid amount</small>
+	</div></div>
+	<div class="row"><div class="large-centered large-8 small-12 columns">
+		<input type="text" name="full-name" id="full-name" placeholder="Name" required pattern="[\w\s]{4,100}" />
+		<small class="error">You must enter a valid full name that is no more than 100 characters.</small>
+	</div></div>
+	<div class="row"><div class="large-offset-2 large-8 small-12 columns">
+		<input type="text" name="email" id="email" placeholder="Email" required pattern="email" />
+		<small class="error">You must enter a valid email address.</small>
+	</div></div>
+	<div class="row"><div class="large-offset-2 large-8 small-12 columns">
+		<input type="text" name="phone" id="phone" placeholder="Phone Number" required pattern="[\w\s]{4,20}" />
+		<small class="error">You must enter a valid phone number that is no more than 20 characters.</small>
+	</div></div>
+	<a class="secondary button" id="donate-checkout">Checkout &raquo;</a>
 	<a class="close-reveal-modal">&#215;</a>
+</form>
 </div>
 <div id="give-form" class="reveal-modal" data-reveal>
 <h2>Donate To Our Auction</h2>
-	<p class="lead">Your couch.  It is mine.</p>
-	<p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+<form data-abide id="auction-fields" method="post" action="/donate/thanks">
+	<div class="row"><div class="large-centered large-8 small-12 columns">
+		<input type="text" name="title" placeholder="Item Description" required pattern=".{10,250}" />
+		<small class="error">You must enter an item description between 10 and 250 characters.</small>
+	</div></div>
+	<div class="row"><div class="large-centered large-8 small-12 columns">
+		<input type="text" name="full-name"  placeholder="Name" required pattern="[\w\s]{4,100}" />
+		<small class="error">You must enter a valid full name that is no more than 100 characters.</small>
+	</div></div>
+	<div class="row"><div class="large-offset-2 large-8 small-12 columns">
+		<input type="text" name="email" placeholder="Email" required pattern="email" />
+		<small class="error">You must enter a valid email address.</small>
+	</div></div>
+	<div class="row"><div class="large-offset-2 large-8 small-12 columns">
+		<input type="text" name="phone" placeholder="Phone Number" required pattern="[\w\s]{4,20}" />
+		<small class="error">You must enter a valid phone number that is no more than 20 characters.</small>
+	</div></div>
+	<a class="secondary button" id="auction-submit-button">Send</a>
 	<a class="close-reveal-modal">&#215;</a>
+</form>
 </div>

@@ -1,0 +1,31 @@
+<h1>Listing donations</h1>
+
+<table style="width: 100%">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Type</th>
+			<th>Description</th>
+			<th>Donation</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+
+  <tbody>
+    <% @donations.each do |donation| %>
+      <tr>
+			<td><%= donation.created_at.strftime "%b %d" %></td>
+			<td><%= donation.name %></td>
+			<td><%= donation.email %></td>
+			<td><%= donation.phone %></td>
+			<td><%= donation.support_type.titleize %></td>
+			<td><%= donation.title %></td>
+			<td><%= number_to_currency donation.amount %></td>
+			<td><%= link_to 'Delete', donation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,103 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+# Sponsor levels
+levels = {
+	gold: {amount: 2500, text: "Heart of Gold", value: 'gold'},
+	silver: {amount: 1500, text: "Heart of Silver", value: 'silver'},
+	bronze: {amount: 1200, text: "Heart of Bronze", value: 'bronze'},
+	ocean: {amount: 500, text: "Heart of Ocean", value: 'ocean'},
+	cupid: {amount: 250, text: "Cupid", value: 'cupid'},
+	rose: {amount: 150, text: "Rose", value: 'rose'},
+	supporter: {amount: 5, text: "Supporter", value: 'supporter'},
+}
+
+# Convert the donation amount field to a float
+extract_donation_amount = () ->
+	matches = $('#donate-amount').val().match(/[0-9.]/g)
+	amount = if matches then parseFloat(matches.join('')) else 0
+	donation = if isNaN(amount) then 0 else amount
+
+# Detect the sponsor level based on a donation amount
+detect_sponsor_level = (amount) ->
+	amount = extract_donation_amount()
+	for type, level of levels
+		if amount >= level.amount
+			return level
+	levels.supporter
+
+# Refresh the sponsor level selected based on the amount entered
+refresh_sponsor_level = () ->
+	level = detect_sponsor_level($('#donate-amount').val())
+	$('#donate-form h2').html('Become a '+level.text+(if level.value == 'supporter' then '' else ' Sponsor'))
+	$('#sponsor-level').val(level.value)
+	$('#title').val(level.text)
+
+$(document).ready ->
+	stripe = StripeCheckout.configure(
+		key: $('meta[name="stripe-key"]').attr('content'),
+		name: 'Midnight in the Tropics',
+		image: '<%= asset_path 'original-logo-square.png' %>',
+		token: (token, args) ->
+			$('#donate-fields').unbind('submit').submit();
+	)
+
+	# Initialization of the donation modal
+	$('#reveal-donate-form').click (e) ->
+		sponsor = $('#sponsor-level').val()
+		if levels.hasOwnProperty(sponsor)
+			$('#donate-amount').val('$' + levels[sponsor].amount.toFixed(2))
+		else
+			alert "Select a sponsor level"
+			e.stopImmediatePropagation()
+		refresh_sponsor_level()
+
+	# Update the sponsor level every second the donation amount is changed
+	$('#donate-amount').keydown ->
+		setTimeout(refresh_sponsor_level, 500)
+
+	# Begin validation when the donation checkout button is clicked
+	$('#donate-checkout').click ->
+		$('#donate-fields').submit()
+	
+	# Prevent form submittal from reloading the page
+	$('#donate-fields').submit (e) ->
+		e.preventDefault()
+
+	$('#donate-fields').on('valid', ->
+		# Use the Abide validation
+		if $('#donate-fields [data-invalid]').length
+			alert "Some fields contain errors.  Fix those to continue."
+			return
+		# Get the donation amount.  Is it valid?
+		amount = extract_donation_amount()
+		if(amount == 0)
+			alert "You are not donating anything.  Before checking out enter a valid donation amount in the first box."
+		else
+			# All looks good.  Lets prep the stripe popup.
+			level = detect_sponsor_level(amount)
+			amount *= 100
+			stripe.open(
+				email: $('#donate-fields #email').val(),
+				description: level.text,
+				amount: amount
+			)
+	)
+
+	# Auction form
+	$('#auction-submit-button').click ->
+		# Use the Abide validation
+		if $('#auction-fields [data-invalid]').length
+			alert "Some fields contain errors.  Fix those to continue."
+			return
+		$('#auction-fields').submit()
+	
+	# Auction form revealed
+	$('#reveal-auction-form').click (e) ->
+		title = $('#auction-item-type option:selected').html()
+		if ! title
+			alert "Select an auction level first"
+			e.stopImmediatePropagation()
+		title = '' if title == 'other'
+		$('#auction-fields [name="title"]').val(title)

@@ -1,8 +1,19 @@
 Mitt::Application.routes.draw do
-  get "donate/landing"
-  get "donate/thanks"
-  root "donate#landing"
-  resources :charges
+	# Redirect to https on production
+	if Rails.env.production?
+		match "*path" => redirect("https://donate-to-mitt.herokuapp.com/%{path}"), :constraints => { :protocol => "http://" }
+	end
+	
+	# The landing page
+	get "donate/landing"
+	root "donate#landing"
+
+	# The thank you page
+	post "donate/thanks"
+
+	# Donations
+	resources :donations
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

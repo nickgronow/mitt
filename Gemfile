@@ -1,7 +1,13 @@
 source 'https://rubygems.org'
 
+# Ruby Version
+ruby "2.0.0"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
+
+# Browser compatibility
+gem 'browsernizer'
 
 # Use postgres as the database for Active Record
 gem 'pg'
@@ -47,8 +53,12 @@ end
 # Foundation
 # gem 'foundation-rails' # Have to disable Foundation 5.0 for now, since Heroku cannot locate the gem yet
 gem 'zurb-foundation'
+
 # Stripe
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+# Figaro for environment variables
+gem 'figaro'
 
 # gem 'redcarpet'
 
