@@ -28,6 +28,7 @@ Mitt::Application.configure do
 	config.assets.debug = true
 
 	# Email Deliverability
+	config.action_mailer.perform_deliveries = false
 	config.action_mailer.delivery_method = :smtp
 
 	config.action_mailer.smtp_settings = {
