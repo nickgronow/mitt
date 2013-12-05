@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/stripe/stripe-ruby
-  revision: 28ac4ffe000e5508f68dbb33f214b76ba1378a3d
+  revision: f369ca16f956979d7e2a68242399417197f43168
   specs:
-    stripe (1.8.9)
+    stripe (1.9.9)
       mime-types (~> 1.25)
       multi_json (>= 1.0.4, < 2)
       rest-client (~> 1.4)
@@ -78,7 +78,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.25)
+    mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.2)
     nokogiri (1.5.10)

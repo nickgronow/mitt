@@ -5,6 +5,7 @@
 	margin: 0 auto 0;
 	max-width: 950px;
 	min-height: 900px;
+	padding-bottom: 50px;
 	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
 	#header {
 		margin: 10px 0 0;
@@ -55,7 +56,7 @@
 		p {
 			font-size: 1em;
 			line-height: 1.3em;
-			height: 4em;
+			min-height: 4em;
 		}
 		.custom.dropdown {
 			font-size: 1em;
@@ -66,6 +67,23 @@
 	}
 	form.custom .custom.dropdown ul {
 		max-height: none;
+	}
+	.addthis_bubble_style {
+		-moz-box-sizing: content-box;
+		-webkit-box-sizing: content-box;
+		box-sizing: content-box;
+	}
+}
+#footer {
+	background-color: #eee;
+	text-align: center;
+	padding: 1em;
+	color: #888;
+	font-size: 0.9em;
+	a {
+		color: #777;
+		font-weight: bold;
+		text-decoration: none;
 	}
 }
 .reveal-modal {
