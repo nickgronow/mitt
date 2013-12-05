@@ -17,10 +17,10 @@ class DonateController < ApplicationController
 		@donation.save
 
 		# Send an email to contact
-		#if @donation.support_type == 'sponsor'
-			#FormMailer.sponsor_email(@donation).deliver
-		#else
-			#FormMailer.auction_email(@donation).deliver
-		#end
+		if @donation.support_type == 'sponsor'
+			FormMailer.sponsor_email(@donation).deliver
+		else
+			FormMailer.auction_email(@donation).deliver
+		end
 	end
 end
