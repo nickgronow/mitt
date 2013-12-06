@@ -6,7 +6,7 @@
     <title><%= content_for?(:head_title) ? yield(:head_title) : "Heart In The Tropics" %></title>
 	<%= content_for?(:head) ? yield(:head) : '' %>
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= javascript_include_tag "custom.modernizr" %>
     <%= csrf_meta_tags %>
 </head>
 <body>
@@ -16,6 +16,12 @@
 			<p class="first">Heart In The Tropics</p>
 			<p>February 15, 2014</p>
 		</div>
+		<% flash.each do |name, msg| %>
+			<div data-alert class="alert-box warning radius">
+				<%= msg %>
+				<a href="#" class="close">&times</a>
+			</div>
+		<% end %>
 		<%= yield %>
 	</div>
     <%= javascript_include_tag "application" %>

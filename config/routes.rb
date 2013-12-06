@@ -1,7 +1,7 @@
 Mitt::Application.routes.draw do
 	# Redirect to https on production
 	if Rails.env.production?
-		get "*path" => to: redirect("https://donate-to-mitt.herokuapp.com/%{path}"), :constraints => { :protocol => "http://" }
+		get "*path", to: redirect("https://donate-to-mitt.herokuapp.com/%{path}"), :constraints => { :protocol => "http://" }
 	end
 	
 	# The landing page

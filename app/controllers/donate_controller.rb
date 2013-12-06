@@ -16,22 +16,15 @@ class DonateController < ApplicationController
 		@donation.title = params[:title]
 		
 		# Create the charge to the supporter
-		customer = Stripe::Customer.create(
-			:email => 'example@stripe.com',
-			:card  => params[:token]
-		)
+		token = JSON.parse params[:token]
+		#raise RuntimeError, token['id']
 
 		charge = Stripe::Charge.create(
-			:customer    => customer.id,
-			:amount      => round(@donation.amount * 100),
+			:card    => token['id'],
+			:amount      => @donation.amount.round * 100,
 			:description => 'Sponsor Donation for Heart in the Tropics',
 			:currency    => 'usd'
 		)
-
-		rescue Stripe::CardError => e
-			flash[:error] = e.message
-			redirect_to "donate/landing"
-		end
 
 		# Save this contact to the database
 		@donation.save
@@ -42,5 +35,10 @@ class DonateController < ApplicationController
 		else
 			FormMailer.auction_email(@donation).deliver
 		end
+
+		# In case of a Stripe error
+		rescue Stripe::CardError => e
+			flash[:error] = e.message
+			redirect_to "/donate/landing"
 	end
 end

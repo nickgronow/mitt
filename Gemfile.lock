@@ -36,21 +36,10 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
-    authlogic (3.3.0)
-      activerecord (>= 3.2)
-      activesupport (>= 3.2)
-    aws-sdk (1.26.0)
-      json (~> 1.4)
-      nokogiri (>= 1.4.4, < 1.6.0)
-      uuidtools (~> 2.1)
     browser (0.2.1)
     browsernizer (0.2.2)
       browser (> 0.1.4)
     builder (3.1.4)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
-    cocaine (0.5.3)
-      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -81,12 +70,6 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.2)
-    nokogiri (1.5.10)
-    paperclip (3.5.2)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
-      mime-types
     pg (0.17.0)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -145,21 +128,17 @@ GEM
     uglifier (2.3.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  authlogic
-  aws-sdk
   browsernizer
   coffee-rails (~> 4.0.0)
   figaro
   foundation-rails
   jbuilder (~> 1.2)
   jquery-rails
-  paperclip (~> 3.0)
   pg
   rails (= 4.0.1)
   rails_12factor
