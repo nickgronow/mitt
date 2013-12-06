@@ -40,6 +40,7 @@ $(document).ready ->
 		name: 'Midnight in the Tropics',
 		image: '<%= asset_path 'original-logo-square.png' %>',
 		token: (token, args) ->
+			$('#stripe-token').val('token')
 			$('#donate-fields').unbind('submit').submit()
 	)
 

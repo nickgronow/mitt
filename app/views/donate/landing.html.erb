@@ -58,6 +58,7 @@
 <h2>Become A Sponsor</h2>
 <%= form_tag '/donate/thanks', method: 'post', 'data-abide'=>'', id: "donate-fields" %>
 	<input type="hidden" name="title" id="title" value="" />
+	<input type="hidden" name="token" id="stripe-token" value="" />
 	<div class="row"><div class="large-centered large-8 small-12 columns">
 		<input type="text" name="donate-amount" id="donate-amount" placeholder="Donation Amount" required/>
 		<small class="error">You must enter a valid amount</small>
