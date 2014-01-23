@@ -15,16 +15,18 @@ class DonateController < ApplicationController
 		@donation.amount = params["donate-amount"] ? params["donate-amount"].gsub(/[^0-9.]/, '') : 0
 		@donation.title = params[:title]
 		
-		# Create the charge to the supporter
-		token = JSON.parse params[:token]
-		#raise RuntimeError, token['id']
+    if @donation.support_type == 'sponsor'
+      # Create the charge to the supporter
+      token = JSON.parse params[:token]
+      #raise RuntimeError, token['id']
 
-		charge = Stripe::Charge.create(
-			:card    => token['id'],
-			:amount      => @donation.amount.round * 100,
-			:description => 'Sponsor Donation for Heart in the Tropics',
-			:currency    => 'usd'
-		)
+      charge = Stripe::Charge.create(
+        :card    => token['id'],
+        :amount      => @donation.amount.round * 100,
+        :description => 'Sponsor Donation for Heart in the Tropics',
+        :currency    => 'usd'
+      )
+    end
 
 		# Save this contact to the database
 		@donation.save
